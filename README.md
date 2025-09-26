@@ -10,7 +10,7 @@ The repository contains the following key folders:
 
 - **`Documents/`**: Contains project reports and documentation (e.g., *Progress Report 1*).
 - **`Implementation/`**: Contains the source code and resources for the application.
-  - **`/app/src/main/res/layout/login.xml`**: Login screen UI layout.
+  - **`/app/src/main/res/layout/login.xml`**: Login screen UI layout. **(I will add more layouts here)**
   - **`/app/src/main/java/`**: Java code for app functionality (e.g., Login, BMI/Calorie Calculator, Task Tracker, etc.). -> **(I am working on this)**
 
 ## 3. Features
