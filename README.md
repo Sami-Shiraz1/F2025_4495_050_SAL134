@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-Nutrevo is an Android application designed to help users monitor and manage their health in a single, easy-to-use platform. It combines essential health features such as BMI and calorie calculators, task-based habit tracking, interactive health tutorials, and location-based services for finding nearby healthcare facilities and gyms. Nutrevo aims to centralize these tools into an offline-capable app to make healthy living more achievable and accessible for everyone.
+Nutrevo will be an Android app that provides a centralized, user-friendly platform for health monitoring and management. It incorporates key health features like calorie and BMI calculators, task-based habit tracking, interactive health seminars, and location-based services for locating local gyms and medical institutions. In order to make healthy living more accessible for everyone, Nutrevo plans to consolidate these resources into an offline-capable application.
 
 ## 2. Folder Structure
 
