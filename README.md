@@ -28,7 +28,6 @@ The app will be developed in stages:
 1. **UI Design**: Create intuitive user interfaces for each module (login, calculators, task manager, tutorials, etc.).
 2. **Backend Implementation**: Develop core features like BMI/calorie calculation, task tracking, and geolocation.
 3. **Testing & Feedback**: Perform internal testing followed by user feedback to improve usability and performance.
-4. **Release**: Finalize the app for deployment.
 
 ## 5. Technologies Used
 
