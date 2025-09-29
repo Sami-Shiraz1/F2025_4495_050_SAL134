@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FAFAFA"
+    tools:context=".MainActivity">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="BMI Calculator"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#333"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Weight Input -->
+    <EditText
+        android:id="@+id/WeightInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter weight (kg)"
+        android:inputType="numberDecimal"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:background="@drawable/edittext_background"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- Height Input (ft) -->
+    <EditText
+        android:id="@+id/HeightInputFt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Height (ft)"
+        android:inputType="numberDecimal"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:background="@drawable/edittext_background"
+        app:layout_constraintTop_toBottomOf="@id/WeightInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/HeightInputInch"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Height Input (inch) -->
+    <EditText
+        android:id="@+id/HeightInputInch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Height (in)"
+        android:inputType="numberDecimal"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:background="@drawable/edittext_background"
+        app:layout_constraintTop_toBottomOf="@id/WeightInput"
+        app:layout_constraintStart_toEndOf="@id/HeightInputFt"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Calculate Button -->
+    <Button
+        android:id="@+id/Calculate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Calculate BMI"
+        android:textStyle="bold"
+        android:backgroundTint="#2196F3"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/HeightInputInch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- BMI Result -->
+    <TextView
+        android:id="@+id/BMIOutput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Your BMI: --"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#333"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/Calculate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- BMI Description -->
+    <TextView
+        android:id="@+id/BMIOutputDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="BMI category will appear here."
+        android:textSize="18sp"
+        android:textColor="#666"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/BMIOutput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
