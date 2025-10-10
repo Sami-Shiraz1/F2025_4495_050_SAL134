@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F9F9"
+    tools:context=".HealthTipsActivity">
+
+    <!-- Header Image with overlay -->
+    <FrameLayout
+        android:id="@+id/headerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="230dp">
+
+        <ImageView
+            android:id="@+id/ivHeader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/healthtipsimage"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/health_tips_image" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:padding="12dp"
+            android:text="Daily Health Tips"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:background="#80000000"
+            android:gravity="center" />
+    </FrameLayout>
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:id="@+id/scrollTips"
+        android:layout_below="@id/headerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvHealthTipsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Healthy Living Guide"
+                android:textStyle="bold"
+                android:textColor="#2E7D32"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/tvHealthTipsContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/health_tips"
+                android:textColor="#333333"
+                android:lineSpacingExtra="6dp"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
