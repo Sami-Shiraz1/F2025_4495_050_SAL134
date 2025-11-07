@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Sleep -->
+        <TextView
+            android:id="@+id/tvSleepValue"
+            android:text="Sleep: 6 hrs"
+            android:layout_marginTop="120dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <SeekBar
+            android:id="@+id/sbSleep"
+            android:max="12"
+            android:progress="6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Steps -->
+        <TextView
+            android:text="Steps:"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioGroup
+            android:id="@+id/rgSteps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbSteps1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Below 3000"/>
+            <RadioButton
+                android:id="@+id/rbSteps2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3000 - 7000"/>
+            <RadioButton
+                android:id="@+id/rbSteps3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7000 - 10000"/>
+            <RadioButton
+                android:id="@+id/rbSteps4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Above 10000"/>
+        </RadioGroup>
+
+        <!-- Stress -->
+        <TextView
+            android:text="Stress Level:"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Spinner
+            android:id="@+id/spStress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/stress_levels"/>
+
+        <!-- Water Intake -->
+        <TextView
+            android:id="@+id/tvWaterValue"
+            android:text="Water Intake: 2 L"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <SeekBar
+            android:id="@+id/sbWater"
+            android:max="5"
+            android:progress="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Exercise Time -->
+        <TextView
+            android:id="@+id/tvExerciseValue"
+            android:text="Exercise: 30 min"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <SeekBar
+            android:id="@+id/sbExercise"
+            android:max="120"
+            android:progress="30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Age -->
+        <TextView
+            android:id="@+id/tvAgeValue"
+            android:text="Age: 25 yrs"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <SeekBar
+            android:id="@+id/sbAge"
+            android:max="100"
+            android:progress="25"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Predict Button -->
+        <Button
+            android:id="@+id/btnPredict"
+            android:text="Predict Health Tip"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Stats Button -->
+        <Button
+            android:id="@+id/btnStats"
+            android:text="Show Stats"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Result -->
+        <TextView
+            android:id="@+id/tvResult"
+            android:text="Prediction will appear here."
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</ScrollView>
