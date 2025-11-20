@@ -25,6 +25,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!-- Scrollable Content -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -36,16 +37,26 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- Header -->
+                <!-- User Greeting -->
                 <TextView
+                    android:id="@+id/tvWelcomeUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Welcome to Nutrevo"
+                    android:text="Welcome, User!"
                     android:textSize="24sp"
-                    android:layout_marginTop="80dp"
                     android:textStyle="bold"
                     android:textColor="#333333"
-                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Health Records RecyclerView -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvHealthRecords"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:paddingTop="8dp"
+                    android:clipToPadding="false"
+                    android:scrollbars="vertical"
                     android:layout_marginBottom="24dp"/>
 
                 <!-- Health Tips Card -->
@@ -119,6 +130,43 @@
                             android:layout_marginStart="16dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+                <!-- Workout Recommender Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/workoutRecommender"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    android:clickable="true"
+                    android:foreground="?android:selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/workout"
+                            android:background="@drawable/ovalorange"
+                            android:padding="12dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Workout Recommender"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#FF9800"
+                            android:layout_marginStart="16dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
 
                 <!-- Calorie Calculator Card -->
                 <androidx.cardview.widget.CardView
