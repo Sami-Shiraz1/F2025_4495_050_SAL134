@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Fitness Level -->
+        <TextView
+            android:text="Fitness Level:"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Spinner
+            android:id="@+id/spFitnessLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/fitness_levels"/>
+
+        <!-- Goal -->
+        <TextView
+            android:text="Fitness Goal:"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Spinner
+            android:id="@+id/spGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/goals"/>
+
+        <!-- Weekly Workout Time -->
+        <TextView
+            android:id="@+id/tvWeeklyTime"
+            android:text="Workout Time: 5 hrs/week"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <SeekBar
+            android:id="@+id/sbWeeklyTime"
+            android:max="10"
+            android:progress="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Preferred Workout Type -->
+        <TextView
+            android:text="Preferred Workout Type:"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioGroup
+            android:id="@+id/rgWorkoutType"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/rbCardio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cardio"/>
+            <RadioButton
+                android:id="@+id/rbStrength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Strength"/>
+            <RadioButton
+                android:id="@+id/rbFlexibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flexibility"/>
+        </RadioGroup>
+
+        <!-- Predict Button -->
+        <Button
+            android:id="@+id/btnRecommend"
+            android:text="Get Recommended Workout"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Result -->
+        <TextView
+            android:id="@+id/tvWorkoutResult"
+            android:text="Recommendation will appear here."
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</ScrollView>
