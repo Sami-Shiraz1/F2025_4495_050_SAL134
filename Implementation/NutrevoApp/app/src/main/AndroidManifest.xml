@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Nutrevo"
@@ -10,38 +13,70 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Login" />
-        <activity android:name=".LoginSignupActivity" />
-        <activity android:name=".DescriptionActivity" />
-
-        <activity android:name=".HomePageActivity"
+        <!-- LOGIN SCREEN IS NOW LAUNCHER -->
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
+        <!-- SIGNUP SCREEN -->
         <activity
-            android:name=".HealthTipsActivity"
+            android:name=".RegisterActivity"
+            android:exported="true" />
+
+        <!-- HOME PAGE (only after login) -->
+        <activity
+            android:name=".HomePageActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".HealthAIPredictorActivity"
             android:label="Health Tips"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:exported="true" />
+
         <activity
             android:name=".ExerciseTipsActivity"
             android:label="Exercise Tips"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:exported="true" />
+
         <activity
             android:name=".FoodTipsActivity"
             android:label="Food Tips"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:exported="true" />
+
         <activity
             android:name=".CalorieCalculator"
             android:label="Calorie Calculator"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:exported="true" />
+
         <activity
             android:name=".BmiCalculatorActivity"
             android:label="BMI Calculator"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:exported="true" />
+
+        <activity
+            android:name=".HeartDiseasePredictorActivity"
+            android:label="Heart Disease Predictor"
+            android:theme="@style/AppTheme"
+            android:exported="true" />
+
+        <activity
+            android:name=".WorkoutRecommenderActivity"
+            android:label="Work Out Recommender"
+            android:theme="@style/AppTheme"
+            android:exported="true"/>
+
+
     </application>
 
 </manifest>
+
