@@ -1,104 +1,122 @@
 package com.example.nutrevoapp;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class HomePageActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
-    private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle toggle;
+public class HomePageActivity extends AppCompatActivity {
 
-    private CardView healthTips, exerciseTips, foodTips, medicineKit;
-    private CardView bmiCalculator, nearbyHospitals, routine, aboutUs;
-    private CardView calorieCalculator, settings;
+    TextView tvWelcomeUser;
+    RecyclerView rvHealthRecords;
+    HealthRecordAdapter adapter;
+    List<HealthRecord> recordList;
+
+    CardView healthTipsCard, heartTipsCard, calorieCard, bmiCard, workoutCard;;
+
+    FirebaseAuth auth;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage_activity);
 
-        drawerLayout = findViewById(R.id.drawerId);
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Initialize views
+        tvWelcomeUser = findViewById(R.id.tvWelcomeUser);
+        rvHealthRecords = findViewById(R.id.rvHealthRecords);
 
-        // Initialize CardViews and set click listeners
-        setupCardViews();
-    }
+        healthTipsCard = findViewById(R.id.HealthTips);
+        heartTipsCard = findViewById(R.id.HeartTip);
+        calorieCard = findViewById(R.id.calorieCalc);
+        bmiCard = findViewById(R.id.BMI);
+        workoutCard = findViewById(R.id.workoutRecommender);
 
-    private void setupCardViews() {
-        healthTips = findViewById(R.id.HealthTips);
-        exerciseTips = findViewById(R.id.ExerciseTips);
-        foodTips = findViewById(R.id.FoodTips);
-        medicineKit = findViewById(R.id.MedKit);
-        calorieCalculator = findViewById(R.id.calorieCalc);
-        bmiCalculator = findViewById(R.id.BMI);
-        nearbyHospitals = findViewById(R.id.Hospital);
-        routine = findViewById(R.id.Routine);
-        aboutUs = findViewById(R.id.About);
-        settings = findViewById(R.id.Settings);
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
-        // Set listeners
-        healthTips.setOnClickListener(this);
-        exerciseTips.setOnClickListener(this);
-        foodTips.setOnClickListener(this);
-        medicineKit.setOnClickListener(this);
-        calorieCalculator.setOnClickListener(this);
-        bmiCalculator.setOnClickListener(this);
-        nearbyHospitals.setOnClickListener(this);
-        routine.setOnClickListener(this);
-        aboutUs.setOnClickListener(this);
-        settings.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-
-        if (id == R.id.HealthTips) {
-            startActivity(new Intent(this, HealthTipsActivity.class));
-        } else if (id == R.id.ExerciseTips) {
-            startActivity(new Intent(this, ExerciseTipsActivity.class));
-        } else if (id == R.id.FoodTips) {
-            startActivity(new Intent(this, FoodTipsActivity.class));
-        } else if (id == R.id.calorieCalc) {
-            startActivity(new Intent(this, CalorieCalculator.class));
-        } else if (id == R.id.BMI) {
-            startActivity(new Intent(this, BmiCalculatorActivity.class));
+        // 1️⃣ Display logged-in user name
+        if (auth.getCurrentUser() != null) {
+            String email = auth.getCurrentUser().getEmail();
+            if (email != null && email.contains("@")) {
+                String firstName = email.split("@")[0]; // Extract text before '@'
+                // Capitalize first letter
+                firstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1);
+                tvWelcomeUser.setText("Hello " + firstName + "!");
+            } else {
+                tvWelcomeUser.setText("Hello!");
+            }
+        } else {
+            tvWelcomeUser.setText("Hello!");
         }
+
+
+        // 2️⃣ Setup RecyclerView
+        recordList = new ArrayList<>();
+        adapter = new HealthRecordAdapter(recordList);
+        rvHealthRecords.setLayoutManager(new LinearLayoutManager(this));
+        rvHealthRecords.setAdapter(adapter);
+
+        // 3️⃣ Fetch user's health records
+        fetchHealthRecords();
+
+        // 4️⃣ Setup click listeners for cards
+        healthTipsCard.setOnClickListener(v ->
+                startActivity(new Intent(HomePageActivity.this, HealthAIPredictorActivity.class)));
+
+        heartTipsCard.setOnClickListener(v ->
+                startActivity(new Intent(HomePageActivity.this, HeartDiseasePredictorActivity.class)));
+
+        calorieCard.setOnClickListener(v ->
+                startActivity(new Intent(HomePageActivity.this, CalorieCalculator.class)));
+
+        bmiCard.setOnClickListener(v ->
+                startActivity(new Intent(HomePageActivity.this, BmiCalculatorActivity.class)));
+
+        workoutCard.setOnClickListener(v ->
+                startActivity(new Intent(HomePageActivity.this, WorkoutRecommenderActivity.class)));
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.mnuitemon_actionbar, menu);
-        return true;
-    }
+    private void fetchHealthRecords() {
+        if (auth.getCurrentUser() == null) return;
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+        String uid = auth.getCurrentUser().getUid();
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+        db.collection("users")
+                .document(uid)
+                .collection("health_records")
+                .orderBy("time")
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    recordList.clear();
+                    for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                        String advice = doc.getString("advice");
+                        long timestamp = doc.getLong("time") != null ? doc.getLong("time") : 0;
+
+                        String formattedDate = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault())
+                                .format(new Date(timestamp));
+
+                        recordList.add(new HealthRecord(advice, formattedDate));
+                    }
+                    adapter.notifyDataSetChanged();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Failed to fetch health records", Toast.LENGTH_SHORT).show();
+                });
     }
 }
