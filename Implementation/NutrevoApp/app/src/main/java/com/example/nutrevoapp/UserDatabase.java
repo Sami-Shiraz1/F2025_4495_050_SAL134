@@ -1,11 +1,12 @@
-package com.example.heathmobileapp;
-
+package com.example.nutrevoapp;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
+
+import com.example.nutrevoapp.DataUser;
 
 public class UserDatabase extends SQLiteOpenHelper {
 
@@ -87,5 +88,13 @@ public class UserDatabase extends SQLiteOpenHelper {
         }
         cursor.close();
         return isValid;
+    }
+
+    public long insertInDatabase(DataUser dataUser) {
+        return 0;
+    }
+
+    public Boolean check(String u, String p) {
+        return null;
     }
 }
